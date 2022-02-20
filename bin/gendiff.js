@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 import { Command }  from 'commander';
-import _ from 'lodash';
+import compare from '../src/index.js'
 const program = new Command();
-
-
 
 program
   .description('Compares two configuration files and shows a difference.')
@@ -11,11 +9,7 @@ program
   .helpOption('-h, --HELP', 'output usage information')
   .option('-f, --format <type>', 'output format')
   .arguments('<filepath1> <filepath2>')
-  
-  .action((filepath1, filepath2) => {
-    console.log(filepath1);
-    console.log(filepath2);
-  });
+  .action((filepath1, filepath2) => compare(filepath1, filepath2))
 
 program.parse();
 
