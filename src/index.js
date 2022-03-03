@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import fs from 'fs';
+import path from 'path';
 
 const isEqual = (object1, object2) => {
   const props1 = Object.getOwnPropertyNames(object1);
@@ -20,19 +21,25 @@ const isEqual = (object1, object2) => {
     acc.push(['  -', `${prop}:`, object2[prop]]);
     return acc;
   }, compareArr1);
-// сортируем по алфавиту.
-  compareArr1.sort((a, b) => a[1] < b[1] ? -1 : 1) 
+  // сортируем по алфавиту.
+  compareArr1.sort((a, b) => {
+    if (a[1] < b[1]) {
+      return -1;
+    }
+    return 1;
+  });
 
-//преобразуем в строку и приводим к требуемому виду.
-  const stringArr = '{ \n' + compareArr1.join('\n').replaceAll(',', ' ') + '\n}';
+  // преобразуем в строку и приводим к требуемому виду.
+  const stringArr = `{ \n${compareArr1.join('\n').replaceAll(',', ' ')}\n}`;
   return stringArr;
 };
-
+const rootPath = path.resolve();
+const filePath = (filepath) => (filepath.startsWith(rootPath) ? fs.readFileSync(filepath, 'utf8') : fs.readFileSync(`${rootPath}/${filepath}`, 'utf8'));
 const compare = (filepath1, filepath2) => {
-  const rootPath = process.cwd();
-  const file1 = filepath1.startsWith(rootPath) ? fs.readFileSync(filepath1, 'utf8') : fs.readFileSync(`${rootPath}/${filepath1}`, 'utf8')
-  const file2 = filepath2.startsWith(rootPath) ? fs.readFileSync(filepath2, 'utf8') : fs.readFileSync(`${rootPath}/${filepath2}`, 'utf8')
-  console.log(isEqual(JSON.parse(file1), JSON.parse(file2)))
+  const file1 = filePath(filepath1);
+  const file2 = filePath(filepath2);
+  console.log(isEqual(JSON.parse(file1), JSON.parse(file2)));
+  return isEqual(JSON.parse(file1), JSON.parse(file2));
 };
 
 export default compare;
