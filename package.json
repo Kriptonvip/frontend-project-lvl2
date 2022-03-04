@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/Kriptonvip/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kriptonvip/frontend-project-lvl2/actions)",
   "type": "module",
+  "jest": {
+  "testEnvironment": "node",
+  "transform": {}
+  },
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
