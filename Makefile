@@ -7,9 +7,8 @@ diff:
 publish:
 	npm publish --dry-run
 lint:
-	eslint .
+	npx eslint .
 test:
 	node --experimental-vm-modules node_modules/jest/bin/jest.js
-
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8
+	node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --coverageProvider=v8
