@@ -1,6 +1,31 @@
-### Hexlet tests and linter status:
+# Difference Generator
+
+### Tests and linter status:
 [![Actions Status](https://github.com/Kriptonvip/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kriptonvip/frontend-project-lvl2/actions)
+![example workflow](https://github.com/Kriptonvip/frontend-project-lvl2/actions/workflows/main.yml/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0e3f9b286444562ee309/maintainability)](https://codeclimate.com/github/Kriptonvip/frontend-project-lvl2/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0e3f9b286444562ee309/test_coverage)](https://codeclimate.com/github/Kriptonvip/frontend-project-lvl2/test_coverage)
 
-<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
+### Description
 
-<a href="https://codeclimate.com/github/codeclimate/codeclimate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage" /></a>
+A difference generator is a program that determines the difference between two data structures. This is a popular task for which there are many online services. A similar mechanism is used in testing or tracking changes in configuration files.
+
+Utility features:
+
+- Support for different input formats: yaml, json
+- Report generation in the form of plain text, stylish and json
+
+### Requirements
+
+- NodeJS
+
+### Setup
+
+    make install
+    sudo npm link
+
+### Run
+
+    gendiff <file1> <file2> --format <format>
+
+### Demo
