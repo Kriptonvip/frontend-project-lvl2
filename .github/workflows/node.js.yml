@@ -30,9 +30,10 @@ jobs:
     - run: npm run build --if-present
     - run: make test
     - run: make lint
+    
     - uses: paambaati/codeclimate-action@v3.0.0
-        env:
+      env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
+      with:
           coverageCommand: make test-coverage
           debug: true
