@@ -4,8 +4,8 @@
   "description": "[![Actions Status](https://github.com/Kriptonvip/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kriptonvip/frontend-project-lvl2/actions)",
   "type": "module",
   "jest": {
-  "testEnvironment": "node",
-  "transform": {}
+    "testEnvironment": "node",
+    "transform": {}
   },
   "bin": {
     "gendiff": "bin/gendiff.js"
@@ -26,7 +26,9 @@
   "homepage": "https://github.com/Kriptonvip/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^9.0.0",
-    "lodash": "^4.17.21"
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
