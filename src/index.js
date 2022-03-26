@@ -19,7 +19,7 @@ const isEqual = (object1, object2) => {
     if (_.has(object1, prop) && object2[prop] === object1[prop]) {
       return acc;
     }
-    acc.push(['  -', `${prop}:`, object2[prop]]);
+    acc.push(['  +', `${prop}:`, object2[prop]]);
     return acc;
   }, compareArr1);
   // сортируем по алфавиту.
@@ -48,6 +48,7 @@ const filePath = (filepath) => {
 const compare = (filepath1, filepath2) => {
   const file1 = filePath(filepath1);
   const file2 = filePath(filepath2);
+  console.log(isEqual(file1, file2));
   return isEqual(file1, file2);
 };
 
