@@ -9,7 +9,7 @@ const isEqual = (object1, object2) => {
   const props2 = Object.getOwnPropertyNames(object2);
   // объединяем два массива, и сортируем по алфавиту.
   const propsUnion = [...new Set([...props1, ...props2])].sort();
-  const [match, first, second] = ['  ', '- ', '+ '];
+  const [match, first, second] = ['', '- ', '+ '];
   const isKeyObject = (Obj1, Obj2, prop) =>
     (_.isPlainObject(Obj1[prop]) && _.isPlainObject(Obj2[prop]));
   const propMatch = (Obj1, Obj2, prop) =>
@@ -40,6 +40,34 @@ const isEqual = (object1, object2) => {
   }, {});
   return compareArr;
 };
+
+const stylish = (value, replacer = ' ', spacesCount = 1) => {
+  const iter = (currentValue, depth) => {
+    if (!_.isObject(currentValue)) { // альтернативный вариант: typeof currentValue !== 'object'
+      return `${currentValue}`;
+    }
+
+    const indentSize = depth * spacesCount;
+    const currentIndent = replacer.repeat(indentSize);
+    const bracketIndent = replacer.repeat(indentSize - spacesCount);
+    const diffIndent = replacer.repeat(indentSize - 2);
+    const lines = Object
+      .entries(currentValue)
+      .map(([key, val]) => {
+        const isDiff = ['+', '-'].some((s) => key.startsWith(s));
+        const indent = (isDiff) ? diffIndent : currentIndent;
+        return `${indent}${key}: ${iter(val, depth + 1)}`;
+      });
+
+    return [
+      '{',
+      ...lines,
+      `${bracketIndent}}`,
+    ].join('\n');
+  };
+
+  return iter(value, 1);
+};
 const rootPath = path.resolve();
 const filePath = (filepath) => {
   const file = filepath.startsWith(rootPath) ? fs.readFileSync(filepath, 'utf8') : fs.readFileSync(`${rootPath}/${filepath}`, 'utf8');
@@ -51,11 +79,11 @@ const filePath = (filepath) => {
   }
   return Error;
 };
+
 const compare = (filepath1, filepath2) => {
   const file1 = filePath(filepath1);
   const file2 = filePath(filepath2);
-  console.log(isEqual(file1, file2));
-  return isEqual(file1, file2);
+  return stylish(isEqual(file1, file2), ' ', 4);
 };
 
 export default compare;
