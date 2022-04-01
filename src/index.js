@@ -54,7 +54,7 @@ const filePath = (filepath) => {
   return Error;
 };
 
-const compare = (filepath1, filepath2, format = stylish()) => {
+const compare = (filepath1, filepath2, format = stylish) => {
   const file1 = filePath(filepath1);
   const file2 = filePath(filepath2);
   return format(isEqual(file1, file2));
