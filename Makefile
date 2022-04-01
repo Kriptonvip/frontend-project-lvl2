@@ -9,7 +9,7 @@ diffY:
 publish:
 	npm publish --dry-run
 lint:
-	npx eslint .
+	npx eslint . 
 test:
 	node --experimental-vm-modules node_modules/jest/bin/jest.js
 test-coverage:
