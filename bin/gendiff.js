@@ -15,7 +15,14 @@ program
   .action((filepath1, filepath2) => {
     if (program.opts().format === 'plain') {
       compare(filepath1, filepath2, plain);
+      console.log(compare(filepath1, filepath2, plain));
+    }
+    if (program.opts().format === 'json') {
+      console.log(compare(filepath1, filepath2, JSON.stringify));
+      compare(filepath1, filepath2, JSON.stringify);
     }
   });
 
 program.parse();
+
+export default compare;
