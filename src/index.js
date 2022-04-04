@@ -11,7 +11,7 @@ const isEqual = (object1, object2) => {
   const props2 = Object.getOwnPropertyNames(object2);
   // объединяем два массива, и сортируем по алфавиту.
   const propsUnion = _.sortBy([...new Set([...props1, ...props2])]);
-  const [match, first, second] = ['', '- ', '+ '];
+  const [first, second] = ['- ', '+ '];
   const isKeyObject = (Obj1, Obj2, prop) =>
     (_.isPlainObject(Obj1[prop]) && _.isPlainObject(Obj2[prop]));
   const propMatch = (Obj1, Obj2, prop) =>
@@ -23,7 +23,7 @@ const isEqual = (object1, object2) => {
     // то запускаем рекурсию.
     if (isKeyObject(object1, object2, prop)) {
       const accMatch = acc;
-      accMatch[`${match}${prop}`] = isEqual(object1Value, object2Value);
+      accMatch[prop] = isEqual(object1Value, object2Value);
       return accMatch;
     }
     // если есть в первом но нет во втором
@@ -37,7 +37,7 @@ const isEqual = (object1, object2) => {
     }
     // если есть в обоих
     if (_.has(object1, prop) && _.has(object2, prop)) {
-      acc[`${match}${prop}`] = object1Value;
+      acc[prop] = object1Value;
     }
     return acc;
   }, {});
