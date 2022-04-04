@@ -2,7 +2,6 @@
 import { Command } from 'commander';
 // eslint-disable-next-line import/extensions
 import compare from '../src/index.js';
-import plain from '../src/formatters/plain.js';
 
 const program = new Command();
 
@@ -14,10 +13,10 @@ program
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
     if (program.opts().format === 'plain') {
-      compare(filepath1, filepath2, plain);
+      compare(filepath1, filepath2, 'plain');
     }
     if (program.opts().format === 'json') {
-      compare(filepath1, filepath2, JSON.stringify);
+      compare(filepath1, filepath2, 'json');
     }
   });
 

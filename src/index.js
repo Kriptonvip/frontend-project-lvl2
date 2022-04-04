@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import YAML from 'yaml';
 import stylish from './formatters/stylish.js';
+import plain from './formatters/plain.js';
 
 const isEqual = (object1, object2) => {
   const props1 = Object.getOwnPropertyNames(object1);
@@ -54,10 +55,17 @@ const filePath = (filepath) => {
   return Error;
 };
 
-const compare = (filepath1, filepath2, format = stylish) => {
+const compare = (filepath1, filepath2, formatName) => {
   const file1 = filePath(filepath1);
   const file2 = filePath(filepath2);
-  return format(isEqual(file1, file2));
+  switch (formatName) {
+    case 'plain':
+      return plain(isEqual(file1, file2));
+    case 'json':
+      return JSON.stringify(isEqual(file1, file2));
+    default:
+      return stylish(isEqual(file1, file2));
+  }
 };
 
 export default compare;
