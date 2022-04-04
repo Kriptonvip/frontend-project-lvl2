@@ -16,15 +16,15 @@ const isEqual = (object1, object2) => {
     (_.isPlainObject(Obj1[prop]) && _.isPlainObject(Obj2[prop]));
   const propMatch = (Obj1, Obj2, prop) =>
     (_.has(Obj1, prop) && Obj1[prop] !== Obj2[prop]);
-  const compareArr = _.reduce(propsUnion, (acc, prop) => {
+  const compareArr = propsUnion.reduce((acc, prop) => {
     const object1Value = object1[prop];
     const object2Value = object2[prop];
     // если значение одного и того же ключа в обеих структурах — объект (но не массив),
     // то запускаем рекурсию.
     if (isKeyObject(object1, object2, prop)) {
-      const accMatch = acc;
-      accMatch[prop] = isEqual(object1Value, object2Value);
-      return accMatch;
+      const match = {};
+      match[prop] = isEqual(object1Value, object2Value);
+      return { ...acc, ...match };
     }
     // если есть в первом но нет во втором
     if (propMatch(object1, object2, prop)) {
