@@ -22,8 +22,7 @@ program
     }
     console.log(0);
     return compare(filepath1, filepath2);
-  });
-
-program.parse();
+  })
+  .parse();
 
 export default compare;
