@@ -5,7 +5,7 @@ test('check rigth work json', () => {
   const filepath1 = './__fixtures__/file1.json';
   const filepath2 = './__fixtures__/file2.json';
   const correctAnswer = fs.readFileSync('./__fixtures__/result_stylish.txt', 'utf-8').trim();
-  expect(compare(filepath1, filepath2)).toBe(correctAnswer);
+  expect(compare(filepath1, filepath2, '123')).toBe(correctAnswer);
 });
 test('check rigth work YAML', () => {
   const filepath1 = './__fixtures__/file1.yml';

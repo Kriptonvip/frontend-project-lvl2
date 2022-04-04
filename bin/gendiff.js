@@ -22,4 +22,6 @@ program
     }
   });
 
+program.parse();
+
 export default compare;
