@@ -23,7 +23,7 @@ const isEqual = (object1, object2) => {
     // то запускаем рекурсию.
     if (isKeyObject(object1, object2, prop)) {
       const accMatch = acc;
-      accMatch[`${match}${prop}`] = isEqual(object1Value, object2Value)
+      accMatch[`${match}${prop}`] = isEqual(object1Value, object2Value);
       return accMatch;
     }
     // если есть в первом но нет во втором
