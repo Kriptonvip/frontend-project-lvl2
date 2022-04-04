@@ -13,11 +13,11 @@ program
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
     if (program.opts().format === 'plain') {
-      console.log(1);
+      console.log(compare(filepath1, filepath2, 'plain'));
       return compare(filepath1, filepath2, 'plain');
     }
     if (program.opts().format === 'json') {
-      console.log(2);
+      console.log(compare(filepath1, filepath2, 'json'));
       return compare(filepath1, filepath2, 'json');
     }
     console.log(compare(filepath1, filepath2));
