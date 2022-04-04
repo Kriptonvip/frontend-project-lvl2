@@ -22,8 +22,9 @@ const isEqual = (object1, object2) => {
     // если значение одного и того же ключа в обеих структурах — объект (но не массив),
     // то запускаем рекурсию.
     if (isKeyObject(object1, object2, prop)) {
-      acc[`${match}${prop}`] = isEqual(object1Value, object2Value);
-      return acc;
+      const accMatch = acc;
+      accMatch[`${match}${prop}`] = isEqual(object1Value, object2Value)
+      return accMatch;
     }
     // если есть в первом но нет во втором
     if (propMatch(object1, object2, prop)) {
