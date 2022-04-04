@@ -1,6 +1,5 @@
 import fs from 'fs';
 import compare from '../src/index.js';
-import plain from '../src/formatters/plain.js';
 
 test('check rigth work json', () => {
   const filepath1 = './__fixtures__/file1.json';
