@@ -57,7 +57,6 @@ const filePath = (filepath) => {
 const compare = (filepath1, filepath2, format = stylish) => {
   const file1 = filePath(filepath1);
   const file2 = filePath(filepath2);
-  console.log(format(isEqual(file1, file2)));
   return format(isEqual(file1, file2));
 };
 
