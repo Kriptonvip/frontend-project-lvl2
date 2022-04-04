@@ -10,35 +10,36 @@ const isEqual = (object1, object2) => {
   const props1 = Object.getOwnPropertyNames(object1);
   const props2 = Object.getOwnPropertyNames(object2);
   // объединяем два массива, и сортируем по алфавиту.
-  const propsUnion = [...new Set([...props1, ...props2])].sort();
+  const propsUnion = _.sortBy([...new Set([...props1, ...props2])]);
   const [match, first, second] = ['', '- ', '+ '];
   const isKeyObject = (Obj1, Obj2, prop) =>
     (_.isPlainObject(Obj1[prop]) && _.isPlainObject(Obj2[prop]));
   const propMatch = (Obj1, Obj2, prop) =>
     (_.has(Obj1, prop) && Obj1[prop] !== Obj2[prop]);
   const compareArr = propsUnion.reduce((acc, prop) => {
+    const resAcc = acc;
     const object1Value = object1[prop];
     const object2Value = object2[prop];
     // если значение одного и того же ключа в обеих структурах — объект (но не массив),
     // то запускаем рекурсию.
     if (isKeyObject(object1, object2, prop)) {
-      acc[`${match}${prop}`] = isEqual(object1Value, object2Value);
-      return acc;
+      resAcc[`${match}${prop}`] = isEqual(object1Value, object2Value);
+      return resAcc;
     }
     // если есть в первом но нет во втором
     if (propMatch(object1, object2, prop)) {
-      acc[`${first}${prop}`] = object1Value;
+      resAcc[`${first}${prop}`] = object1Value;
     }
     // если есть в втором но нет в первом
     if (propMatch(object2, object1, prop)) {
-      acc[`${second}${prop}`] = object2Value;
-      return acc;
+      resAcc[`${second}${prop}`] = object2Value;
+      return resAcc;
     }
     // если есть в обоих
     if (_.has(object1, prop) && _.has(object2, prop)) {
-      acc[`${match}${prop}`] = object1Value;
+      resAcc[`${match}${prop}`] = object1Value;
     }
-    return acc;
+    return resAcc;
   }, {});
   return compareArr;
 };
