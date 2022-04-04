@@ -20,7 +20,7 @@ program
       console.log(2);
       return compare(filepath1, filepath2, 'json');
     }
-    console.log(0);
+    console.log(compare(filepath1, filepath2));
     return compare(filepath1, filepath2);
   });
 program.parse();
