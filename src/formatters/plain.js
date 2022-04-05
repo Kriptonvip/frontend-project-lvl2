@@ -13,13 +13,21 @@ const plain = (value) => {
         const keyRemove = `-${key.slice(1)}`; // для проверки был ли такой же ключ в первом фаиле.
         const keyClean = key.slice(2); // ключ без ориентиров, для итогового вывода.
         const isString = (data) => (typeof data === 'string' ? `'${(data)}'` : `${(data)}`);
-        if (key.startsWith('+') && !_.has(currentValue, keyRemove)) return `Property '${objPath}${keyClean}' was added with value: ${isString(currentValue[key])}`;
-        if (key.startsWith('-') && !_.has(currentValue, keyUpdate)) return `Property '${objPath}${keyClean}' was removed`;
-        if (key.startsWith('-') && _.has(currentValue, keyUpdate)) return `Property '${objPath}${keyClean}' was updated. From ${isString(val)} to ${isString(currentValue[keyUpdate])}`;
+        if (key.startsWith('+') && !_.has(currentValue, keyRemove)) { 
+          return `Property '${objPath}${keyClean}' was added with value: ${isString(currentValue[key])}`;
+        }
+        if (key.startsWith('-') && !_.has(currentValue, keyUpdate)) {
+          return `Property '${objPath}${keyClean}' was removed`;
+        }
+        if (key.startsWith('-') && _.has(currentValue, keyUpdate)) {
+          return `Property '${objPath}${keyClean}' was updated. From ${isString(val)} to ${isString(currentValue[keyUpdate])}`;
+        }
         return iter(val, `${objPath}${key}.`);
       });
 
-    return [...lines].filter((line) => (line.startsWith('Property'))).map((line) => line.replace('[object Object]', '[complex value]')).join('\n');
+    return [...lines]
+      .filter((line) => (line.startsWith('Property')))
+      .map((line) => line.replace('[object Object]', '[complex value]')).join('\n');
   };
 
   return iter(value);

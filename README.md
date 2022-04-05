@@ -5,21 +5,22 @@ This is an application with which you can compare and find the difference betwee
 
 The application works on the command line. 
 
-You can get the results:
-1| As a tree with all the differences.
-2| As a simple text report.
-3| In .json format.
+<ul>You can get the results:
+    <li>As a tree with all the differences.</li>
+    <li>As a simple text report.</li>
+    <li>In .json format.</li>
+</ul>
 
 Use gendiff -h for help
 Usage: gendiff [options] <filepath1> <filepath2>
 
 Compares the two configuration files and shows the difference.
 
-Options:
-  -V, --version Output version number
-  -f, -format BtypY output format (default: "stylish")
-  -h, --HELP output usage information
-
+<ul>Options:
+    <li>-V, --version Output version number</li>
+    <li>-f, -format BtypY output format (default: "stylish")</li>
+    <li>-h, --HELP output usage information</li>
+</ul>
 
 You can also use the File compare function in your projects by importing a module.
 

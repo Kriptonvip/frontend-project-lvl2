@@ -48,8 +48,8 @@ const isEqual = (object1, object2) => {
   return compareArr;
 };
 
-const rootPath = path.resolve();
 const filePath = (filepath) => {
+  const rootPath = path.resolve();
   const file = filepath.startsWith(rootPath) ? fs.readFileSync(filepath, 'utf8') : fs.readFileSync(`${rootPath}/${filepath}`, 'utf8');
   if (filepath.endsWith('.json')) {
     return JSON.parse(file);
