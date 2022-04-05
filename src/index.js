@@ -12,32 +12,36 @@ const isEqual = (object1, object2) => {
   // объединяем два массива, и сортируем по алфавиту.
   const propsUnion = _.sortBy([...new Set([...props1, ...props2])]);
   const [first, second] = ['- ', '+ '];
-  const isKeyObject = (Obj1, Obj2, prop) =>
-    (_.isPlainObject(Obj1[prop]) && _.isPlainObject(Obj2[prop]));
-  const propMatch = (Obj1, Obj2, prop) =>
-    (_.has(Obj1, prop) && Obj1[prop] !== Obj2[prop]);
   const compareArr = propsUnion.reduce((acc, prop) => {
     const object1Value = object1[prop];
     const object2Value = object2[prop];
     // если значение одного и того же ключа в обеих структурах — объект (но не массив),
     // то запускаем рекурсию.
-    if (isKeyObject(object1, object2, prop)) {
-      const match = { [prop]: isEqual(object1Value, object2Value) };
+    if (_.isPlainObject(object1[prop]) && _.isPlainObject(object2[prop])) {
+      const object = { [prop]: isEqual(object1Value, object2Value) };
       // match[prop] = isEqual(object1Value, object2Value);
-      return { ...acc, ...match };
+      return { ...acc, ...object };
     }
-    // если есть в первом но нет во втором
-    if (propMatch(object1, object2, prop)) {
-      acc[`${first}${prop}`] = object1Value;
+    // если есть в обоих и совпадает
+    if (object1Value === object2Value) {
+      const equal = { [prop]: object1Value };
+      return { ...acc, ...equal };
     }
-    // если есть в втором но нет в первом
-    if (propMatch(object2, object1, prop)) {
-      acc[`${second}${prop}`] = object2Value;
-      return acc;
-    }
-    // если есть в обоих
+    // если есть оба значения и они не равны.
     if (_.has(object1, prop) && _.has(object2, prop)) {
-      acc[prop] = object1Value;
+      const object1Match = { [`${first}${prop}`]: object1Value };
+      const object2Match = { [`${second}${prop}`]: object2Value };
+      return { ...acc, ...object1Match, ...object2Match };
+    }
+    // если есть в первом но не совпадают значения, добавляем ключ:знач - из первого.
+    if (_.has(object1, prop)) {
+      const object1Match = { [`${first}${prop}`]: object1Value };
+      return { ...acc, ...object1Match };
+    }
+    // если есть во втором но не совпадают значения, добавляем ключ:знач - из второго.
+    if (_.has(object2, prop)) {
+      const object2Match = { [`${second}${prop}`]: object2Value };
+      return { ...acc, ...object2Match };
     }
     return acc;
   }, {});
