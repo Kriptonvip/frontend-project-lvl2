@@ -17,7 +17,6 @@ const compare = (object1, object2) => {
     // то запускаем рекурсию.
     if (_.isPlainObject(object1[prop]) && _.isPlainObject(object2[prop])) {
       const object = { [prop]: compare(object1Value, object2Value) };
-      // match[prop] = isEqual(object1Value, object2Value);
       return { ...acc, ...object };
     }
     // если есть в обоих и совпадает
