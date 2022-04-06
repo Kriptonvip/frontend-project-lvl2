@@ -2,8 +2,7 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import YAML from 'yaml';
-import stylish from './formatters/stylish.js';
-import plain from './formatters/plain.js';
+import diff from './formatters/index.js';
 
 const compare = (object1, object2) => {
   const props1 = Object.getOwnPropertyNames(object1);
@@ -59,17 +58,11 @@ const filePath = (filepath) => {
   return Error;
 };
 
-const gendiff = (filepath1, filepath2, formatName) => {
+const genDiff = (filepath1, filepath2, formatName) => {
   const file1 = filePath(filepath1);
   const file2 = filePath(filepath2);
-  switch (formatName) {
-    case 'plain':
-      return console.log(plain(compare(file1, file2)));
-    case 'json':
-      return console.log(JSON.stringify(compare(file1, file2)));
-    default:
-      return console.log(stylish(compare(file1, file2)));
-  }
+  const data = compare(file1, file2);
+  return diff(data, formatName);
 };
 
-export default gendiff;
+export default genDiff;
