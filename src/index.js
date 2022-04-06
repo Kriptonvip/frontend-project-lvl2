@@ -64,11 +64,11 @@ const gendiff = (filepath1, filepath2, formatName) => {
   const file2 = filePath(filepath2);
   switch (formatName) {
     case 'plain':
-      return plain(compare(file1, file2));
+      return console.log(plain(compare(file1, file2)));
     case 'json':
-      return JSON.stringify(compare(file1, file2));
+      return console.log(JSON.stringify(compare(file1, file2)));
     default:
-      return stylish(compare(file1, file2));
+      return console.log(stylish(compare(file1, file2)));
   }
 };
 
