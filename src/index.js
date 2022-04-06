@@ -1,4 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
@@ -6,7 +5,7 @@ import YAML from 'yaml';
 import stylish from './formatters/stylish.js';
 import plain from './formatters/plain.js';
 
-const isEqual = (object1, object2) => {
+const compare = (object1, object2) => {
   const props1 = Object.getOwnPropertyNames(object1);
   const props2 = Object.getOwnPropertyNames(object2);
   // объединяем два массива, и сортируем по алфавиту.
@@ -18,7 +17,7 @@ const isEqual = (object1, object2) => {
     // если значение одного и того же ключа в обеих структурах — объект (но не массив),
     // то запускаем рекурсию.
     if (_.isPlainObject(object1[prop]) && _.isPlainObject(object2[prop])) {
-      const object = { [prop]: isEqual(object1Value, object2Value) };
+      const object = { [prop]: compare(object1Value, object2Value) };
       // match[prop] = isEqual(object1Value, object2Value);
       return { ...acc, ...object };
     }
@@ -60,17 +59,17 @@ const filePath = (filepath) => {
   return Error;
 };
 
-const compare = (filepath1, filepath2, formatName) => {
+const gendiff = (filepath1, filepath2, formatName) => {
   const file1 = filePath(filepath1);
   const file2 = filePath(filepath2);
   switch (formatName) {
     case 'plain':
-      return plain(isEqual(file1, file2));
+      return plain(compare(file1, file2));
     case 'json':
-      return JSON.stringify(isEqual(file1, file2));
+      return JSON.stringify(compare(file1, file2));
     default:
-      return stylish(isEqual(file1, file2));
+      return stylish(compare(file1, file2));
   }
 };
 
-export default compare;
+export default gendiff;

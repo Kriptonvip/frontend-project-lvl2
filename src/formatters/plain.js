@@ -5,7 +5,6 @@ const plain = (value) => {
     if (!_.isObject(currentValue)) {
       return `${currentValue}`;
     }
-    // const path = `${objPath}`;
     const lines = Object
       .entries(currentValue)
       .map(([key, val]) => {
