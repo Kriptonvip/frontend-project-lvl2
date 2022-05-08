@@ -1,43 +1,73 @@
 import _ from 'lodash';
 
 const compare = (object1, object2) => {
-  const props1 = Object.getOwnPropertyNames(object1);
-  const props2 = Object.getOwnPropertyNames(object2);
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
   // объединяем два массива, и сортируем по алфавиту.
-  const propsUnion = _.sortBy([...new Set([...props1, ...props2])]);
-  const [first, second] = ['- ', '+ '];
-  const compareArr = propsUnion.reduce((acc, prop) => {
-    const object1Value = object1[prop];
-    const object2Value = object2[prop];
+  const keysUnion = _.sortBy([...new Set([...keys1, ...keys2])]);
+  const [old, added, unchanged, changed] = ['old', 'added', 'unchanged', 'changed'];
+  const [node, leaf] = ['node', 'leaf'];
+  const compareArr = keysUnion.reduce((acc, key) => {
+    const object1Value = object1[key];
+    const object2Value = object2[key];
     // если значение одного и того же ключа в обеих структурах — объект (но не массив),
     // то запускаем рекурсию.
-    if (_.isPlainObject(object1[prop]) && _.isPlainObject(object2[prop])) {
-      const object = { [prop]: compare(object1Value, object2Value) };
+    if (_.isPlainObject(object1[key]) && _.isPlainObject(object2[key])) {
+      const object = {
+        [key]: {
+          type: node,
+          children: compare(object1Value, object2Value),
+        },
+      };
       return { ...acc, ...object };
     }
     // если есть в обоих и совпадает
     if (object1Value === object2Value) {
-      const equal = { [prop]: object1Value };
-      return { ...acc, ...equal };
+      const object = {
+        [key]: {
+          type: leaf,
+          state: unchanged,
+          value: object1Value,
+        },
+      };
+      return { ...acc, ...object };
     }
     // если есть оба значения и они не равны.
-    if (_.has(object1, prop) && _.has(object2, prop)) {
-      const object1Match = { [`${first}${prop}`]: object1Value };
-      const object2Match = { [`${second}${prop}`]: object2Value };
-      return { ...acc, ...object1Match, ...object2Match };
+    if (_.has(object1, key) && _.has(object2, key)) {
+      const object = {
+        [key]: {
+          type: leaf,
+          state: changed,
+          value: [object1Value, object2Value],
+        },
+      };
+      return { ...acc, ...object };
     }
     // если есть в первом но не совпадают значения, добавляем ключ:знач - из первого.
-    if (_.has(object1, prop)) {
-      const object1Match = { [`${first}${prop}`]: object1Value };
-      return { ...acc, ...object1Match };
+    if (_.has(object1, key)) {
+      const object = {
+        [key]: {
+          type: leaf,
+          state: old,
+          value: object1Value,
+        },
+      };
+      return { ...acc, ...object };
     }
     // если есть во втором но не совпадают значения, добавляем ключ:знач - из второго.
-    if (_.has(object2, prop)) {
-      const object2Match = { [`${second}${prop}`]: object2Value };
-      return { ...acc, ...object2Match };
+    if (_.has(object2, key)) {
+      const object = {
+        [key]: {
+          type: leaf,
+          state: added,
+          value: object2Value,
+        },
+      };
+      return { ...acc, ...object };
     }
     return acc;
   }, {});
+  // console.log(JSON.stringify(compareArr, null, '   '));
   return compareArr;
 };
 

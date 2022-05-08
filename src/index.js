@@ -4,23 +4,28 @@ import YAML from 'yaml';
 import diff from './formatters/index.js';
 import compare from './compare.js';
 
-const filePath = (filepath) => {
-  const rootPath = path.resolve();
-  const file = filepath.startsWith(rootPath) ? fs.readFileSync(filepath, 'utf8') : fs.readFileSync(`${rootPath}/${filepath}`, 'utf8');
-  if (filepath.endsWith('.json')) {
+const getData = (fileName) => {
+  const filePath = path.resolve(fileName);
+  const file = fs.readFileSync(filePath, 'utf8');
+  // объясните пожалуйста зачем строки 11 - 18 выносить в отдельный модуль?
+  // Получается надо сделать функцию определения формата, потом функцию парсер
+  // которая вернёт данные, или оставить как есть эти 7 строк, всё ради абстрагирования?
+  if (fileName.endsWith('.json')) {
     return JSON.parse(file);
   }
-  if (filepath.endsWith('.yaml') || filepath.endsWith('.yml')) {
+  if (fileName.endsWith('.yaml') || fileName.endsWith('.yml')) {
     return YAML.parse(file);
   }
-  return Error;
+  return Error('File path or extension is wrong');
 };
 
 const genDiff = (filepath1, filepath2, formatName) => {
-  const file1 = filePath(filepath1);
-  const file2 = filePath(filepath2);
+  const file1 = getData(filepath1);
+  const file2 = getData(filepath2);
   const data = compare(file1, file2);
-  return diff(data, formatName);
+  const result = diff(data, formatName);
+  console.log(result);
+  return result;
 };
 
 export default genDiff;

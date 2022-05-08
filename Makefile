@@ -4,7 +4,7 @@ gendiff:
 	node bin/gendiff.js
 diff:
 	gendiff __fixtures__/file1.json __fixtures__/file2.json
-	gendiff __fixtures__/file1.yml __fixtures__/file2.yml	
+	gendiff __fixtures__/file1.yml __fixtures__/file2.yml
 diffP:
 	gendiff plain __fixtures__/file1.json __fixtures__/file2.json
 	gendiff plain __fixtures__/file1.yml __fixtures__/file2.yml

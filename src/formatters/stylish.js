@@ -1,31 +1,44 @@
 import _ from 'lodash';
+import stringify from './stringify.js';
 
-const stylish = (value, replacer = ' ', spacesCount = 4) => {
-  const iter = (currentValue, depth) => {
-    if (!_.isObject(currentValue)) { // альтернативный вариант: typeof currentValue !== 'object'
-      return `${currentValue}`;
+const stylish = (tree) => {
+  const iter = (node, depth, spacesCount = 4) => {
+    if (!_.isObject(node)) {
+      return `${node}`;
     }
-
+    const replacer = ' ';
     const indentSize = depth * spacesCount;
     const currentIndent = replacer.repeat(indentSize);
-    const bracketIndent = replacer.repeat(indentSize - spacesCount);
-    const diffIndent = replacer.repeat(indentSize - 2);
+    const indentforDiff = replacer.repeat(indentSize - 2);
+    const indentclose = replacer.repeat(indentSize - 4);
     const lines = Object
-      .entries(currentValue)
+      .entries(node)
       .map(([key, val]) => {
-        const isDiff = ['+', '-'].some((s) => key.startsWith(s));
-        const indent = isDiff ? diffIndent : currentIndent;
-        return `${indent}${key}: ${iter(val, depth + 1)}`;
+        const { type, state, value } = val;
+        if (type === 'node') {
+          return `${currentIndent}${key}: ${iter(val.children, depth + 1)}`;
+        }
+        const stringValue = stringify(value, replacer, indentSize);
+        switch (state) {
+          case 'added':
+            return `${indentforDiff}+ ${key}: ${stringValue}`;
+          case 'old':
+            return `${indentforDiff}- ${key}: ${stringValue}`;
+          case 'unchanged':
+            return `${indentforDiff}  ${key}: ${stringValue}`;
+          case 'changed':
+            return `${indentforDiff}- ${key}: ${stringify(value[0], replacer, indentSize)}\n${indentforDiff}+ ${key}: ${stringify(value[1], replacer, indentSize)}`;
+          default:
+            throw new Error(`Unknown state: '${state}'!`);
+        }
       });
-
     return [
       '{',
       ...lines,
-      `${bracketIndent}}`,
+      `${indentclose}}`,
     ].join('\n');
   };
-
-  return iter(value, 1);
+  return iter(tree, 1);
 };
 
 export default stylish;
