@@ -1,54 +1,268 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1646501567970" clover="3.2.0">
-  <project timestamp="1646501567970" name="All files">
-    <metrics statements="45" coveredstatements="45" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3" elements="61" coveredelements="60" complexity="0" loc="45" ncloc="45" packages="1" files="1" classes="1"/>
-    <file name="index.js" path="/Users/kripton/Desktop/js/frontend-project-lvl2/src/index.js">
-      <metrics statements="45" coveredstatements="45" conditionals="13" coveredconditionals="12" methods="3" coveredmethods="3"/>
-      <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-      <line num="6" count="2" type="stmt"/>
-      <line num="7" count="2" type="stmt"/>
-      <line num="8" count="2" type="stmt"/>
-      <line num="9" count="2" type="cond" truecount="1" falsecount="0"/>
-      <line num="10" count="8" type="cond" truecount="2" falsecount="0"/>
-      <line num="11" count="2" type="stmt"/>
-      <line num="12" count="2" type="stmt"/>
-      <line num="13" count="2" type="stmt"/>
-      <line num="14" count="8" type="stmt"/>
-      <line num="15" count="8" type="stmt"/>
-      <line num="16" count="2" type="stmt"/>
-      <line num="17" count="2" type="cond" truecount="1" falsecount="0"/>
-      <line num="18" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="19" count="2" type="stmt"/>
-      <line num="20" count="2" type="stmt"/>
-      <line num="21" count="6" type="stmt"/>
-      <line num="22" count="6" type="stmt"/>
-      <line num="23" count="2" type="stmt"/>
-      <line num="24" count="2" type="stmt"/>
-      <line num="25" count="2" type="cond" truecount="1" falsecount="0"/>
-      <line num="26" count="20" type="cond" truecount="1" falsecount="0"/>
-      <line num="27" count="8" type="stmt"/>
-      <line num="28" count="8" type="stmt"/>
-      <line num="29" count="20" type="stmt"/>
-      <line num="30" count="2" type="stmt"/>
-      <line num="31" count="2" type="stmt"/>
-      <line num="32" count="2" type="stmt"/>
-      <line num="33" count="2" type="stmt"/>
-      <line num="34" count="2" type="stmt"/>
-      <line num="35" count="1" type="stmt"/>
-      <line num="36" count="1" type="stmt"/>
-      <line num="37" count="1" type="cond" truecount="1" falsecount="1"/>
-      <line num="38" count="1" type="cond" truecount="1" falsecount="0"/>
-      <line num="39" count="1" type="stmt"/>
-      <line num="40" count="1" type="stmt"/>
-      <line num="41" count="1" type="stmt"/>
-      <line num="42" count="1" type="stmt"/>
-      <line num="43" count="1" type="stmt"/>
-      <line num="44" count="1" type="stmt"/>
-      <line num="45" count="1" type="stmt"/>
-    </file>
+<coverage generated="1655919415627" clover="3.2.0">
+  <project timestamp="1655919415628" name="All files">
+    <metrics statements="238" coveredstatements="230" conditionals="59" coveredconditionals="53" methods="11" coveredmethods="11" elements="308" coveredelements="294" complexity="0" loc="238" ncloc="238" packages="2" files="6" classes="6"/>
+    <package name="src">
+      <metrics statements="105" coveredstatements="104" conditionals="16" coveredconditionals="15" methods="3" coveredmethods="3"/>
+      <file name="compare.js" path="/Users/kripton/Desktop/js/frontend-project-lvl2/src/compare.js">
+        <metrics statements="74" coveredstatements="74" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="42" type="stmt"/>
+        <line num="5" count="42" type="stmt"/>
+        <line num="6" count="42" type="stmt"/>
+        <line num="7" count="42" type="stmt"/>
+        <line num="8" count="42" type="stmt"/>
+        <line num="9" count="42" type="stmt"/>
+        <line num="10" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="168" type="stmt"/>
+        <line num="12" count="168" type="stmt"/>
+        <line num="13" count="168" type="stmt"/>
+        <line num="14" count="168" type="stmt"/>
+        <line num="15" count="168" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="36" type="stmt"/>
+        <line num="17" count="36" type="stmt"/>
+        <line num="18" count="36" type="stmt"/>
+        <line num="19" count="36" type="stmt"/>
+        <line num="20" count="36" type="stmt"/>
+        <line num="21" count="36" type="stmt"/>
+        <line num="22" count="36" type="stmt"/>
+        <line num="23" count="36" type="stmt"/>
+        <line num="24" count="168" type="stmt"/>
+        <line num="25" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="18" type="stmt"/>
+        <line num="27" count="18" type="stmt"/>
+        <line num="28" count="18" type="stmt"/>
+        <line num="29" count="18" type="stmt"/>
+        <line num="30" count="18" type="stmt"/>
+        <line num="31" count="18" type="stmt"/>
+        <line num="32" count="18" type="stmt"/>
+        <line num="33" count="18" type="stmt"/>
+        <line num="34" count="18" type="stmt"/>
+        <line num="35" count="168" type="stmt"/>
+        <line num="36" count="168" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="54" type="stmt"/>
+        <line num="38" count="54" type="stmt"/>
+        <line num="39" count="54" type="stmt"/>
+        <line num="40" count="54" type="stmt"/>
+        <line num="41" count="54" type="stmt"/>
+        <line num="42" count="54" type="stmt"/>
+        <line num="43" count="54" type="stmt"/>
+        <line num="44" count="54" type="stmt"/>
+        <line num="45" count="54" type="stmt"/>
+        <line num="46" count="168" type="stmt"/>
+        <line num="47" count="168" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="18" type="stmt"/>
+        <line num="49" count="18" type="stmt"/>
+        <line num="50" count="18" type="stmt"/>
+        <line num="51" count="18" type="stmt"/>
+        <line num="52" count="18" type="stmt"/>
+        <line num="53" count="18" type="stmt"/>
+        <line num="54" count="18" type="stmt"/>
+        <line num="55" count="18" type="stmt"/>
+        <line num="56" count="18" type="stmt"/>
+        <line num="57" count="42" type="cond" truecount="1" falsecount="0"/>
+        <line num="58" count="42" type="stmt"/>
+        <line num="59" count="42" type="stmt"/>
+        <line num="60" count="42" type="stmt"/>
+        <line num="61" count="42" type="stmt"/>
+        <line num="62" count="42" type="stmt"/>
+        <line num="63" count="42" type="stmt"/>
+        <line num="64" count="42" type="stmt"/>
+        <line num="65" count="42" type="stmt"/>
+        <line num="66" count="42" type="stmt"/>
+        <line num="67" count="42" type="stmt"/>
+        <line num="68" count="168" type="stmt"/>
+        <line num="69" count="42" type="stmt"/>
+        <line num="70" count="42" type="stmt"/>
+        <line num="71" count="42" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+      </file>
+      <file name="index.js" path="/Users/kripton/Desktop/js/frontend-project-lvl2/src/index.js">
+        <metrics statements="31" coveredstatements="30" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="12" type="stmt"/>
+        <line num="10" count="12" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="12" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.formatters">
+      <metrics statements="133" coveredstatements="126" conditionals="43" coveredconditionals="38" methods="8" coveredmethods="8"/>
+      <file name="index.js" path="/Users/kripton/Desktop/js/frontend-project-lvl2/src/formatters/index.js">
+        <metrics statements="16" coveredstatements="15" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="0" falsecount="1"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+      </file>
+      <file name="plain.js" path="/Users/kripton/Desktop/js/frontend-project-lvl2/src/formatters/plain.js">
+        <metrics statements="47" coveredstatements="44" conditionals="19" coveredconditionals="17" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="50" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="46" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="50" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="24" type="stmt"/>
+        <line num="8" count="50" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="50" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="50" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="14" count="50" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="50" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="14" type="cond" truecount="0" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="14" type="stmt"/>
+        <line num="25" count="14" type="stmt"/>
+        <line num="26" count="14" type="stmt"/>
+        <line num="27" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="12" type="stmt"/>
+        <line num="30" count="12" type="stmt"/>
+        <line num="31" count="56" type="stmt"/>
+        <line num="32" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="33" count="14" type="stmt"/>
+        <line num="34" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="36" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="37" count="18" type="stmt"/>
+        <line num="38" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="39" count="6" type="stmt"/>
+        <line num="40" count="56" type="stmt"/>
+        <line num="41" count="14" type="stmt"/>
+        <line num="42" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+      </file>
+      <file name="stringify.js" path="/Users/kripton/Desktop/js/frontend-project-lvl2/src/formatters/stringify.js">
+        <metrics statements="26" coveredstatements="26" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="4" count="80" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="140" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="102" type="stmt"/>
+        <line num="7" count="102" type="stmt"/>
+        <line num="8" count="38" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="38" type="stmt"/>
+        <line num="10" count="38" type="stmt"/>
+        <line num="11" count="38" type="stmt"/>
+        <line num="12" count="38" type="stmt"/>
+        <line num="13" count="38" type="stmt"/>
+        <line num="14" count="38" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="38" type="stmt"/>
+        <line num="16" count="38" type="stmt"/>
+        <line num="17" count="38" type="stmt"/>
+        <line num="18" count="38" type="stmt"/>
+        <line num="19" count="38" type="stmt"/>
+        <line num="20" count="38" type="stmt"/>
+        <line num="21" count="80" type="stmt"/>
+        <line num="22" count="80" type="stmt"/>
+        <line num="23" count="80" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+      </file>
+      <file name="stylish.js" path="/Users/kripton/Desktop/js/frontend-project-lvl2/src/formatters/stylish.js">
+        <metrics statements="44" coveredstatements="41" conditionals="12" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="14" type="cond" truecount="0" falsecount="1"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="14" type="stmt"/>
+        <line num="10" count="14" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="12" count="14" type="stmt"/>
+        <line num="13" count="14" type="stmt"/>
+        <line num="14" count="14" type="stmt"/>
+        <line num="15" count="14" type="stmt"/>
+        <line num="16" count="14" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="56" type="stmt"/>
+        <line num="18" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="21" count="44" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="44" type="stmt"/>
+        <line num="23" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="14" type="stmt"/>
+        <line num="25" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="27" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="6" type="stmt"/>
+        <line num="29" count="56" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="18" type="stmt"/>
+        <line num="31" count="56" type="cond" truecount="0" falsecount="1"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="56" type="stmt"/>
+        <line num="34" count="14" type="stmt"/>
+        <line num="35" count="14" type="stmt"/>
+        <line num="36" count="14" type="stmt"/>
+        <line num="37" count="14" type="stmt"/>
+        <line num="38" count="14" type="stmt"/>
+        <line num="39" count="14" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

@@ -1,35 +1,47 @@
 import _ from 'lodash';
 
-const plain = (value) => {
-  const iter = (currentValue, objPath = '') => {
-    if (!_.isObject(currentValue)) {
-      return `${currentValue}`;
+const stringifyPlain = (value) => {
+  if (value === null) return value;
+  switch (typeof value) {
+    case 'string':
+      return `'${value}'`;
+    case 'number':
+      return `${value}`;
+    case 'boolean':
+      return `${value}`;
+    case 'object':
+      return '[complex value]';
+    default:
+      throw new Error(`bad type of ${value}`);
+  }
+};
+
+const plain = (tree) => {
+  const iter = (node, objPath = '') => {
+    if (!_.isObject(node)) {
+      return `${node}`;
     }
+
     const lines = Object
-      .entries(currentValue)
+      .entries(node)
       .map(([key, val]) => {
-        const keyUpdate = `+${key.slice(1)}`; // ключ который обновится, или может обновиться.
-        const keyRemove = `-${key.slice(1)}`; // для проверки был ли такой же ключ в первом фаиле.
-        const keyClean = key.slice(2); // ключ без ориентиров, для итогового вывода.
-        const isString = (data) => (typeof data === 'string' ? `'${(data)}'` : `${(data)}`);
-        if (key.startsWith('+') && !_.has(currentValue, keyRemove)) {
-          return `Property '${objPath}${keyClean}' was added with value: ${isString(currentValue[key])}`;
+        if (val.type === 'node') {
+          return iter(val.children, `${objPath}${key}.`);
         }
-        if (key.startsWith('-') && !_.has(currentValue, keyUpdate)) {
-          return `Property '${objPath}${keyClean}' was removed`;
+        switch (val.state) {
+          case 'added':
+            return `Property '${objPath}${key}' was added with value: ${stringifyPlain(val.value)}`;
+          case 'old':
+            return `Property '${objPath}${key}' was removed`;
+          case 'changed':
+            return `Property '${objPath}${key}' was updated. From ${stringifyPlain(val.value[0])} to ${stringifyPlain(val.value[1])}`;
+          default:
+            return '';
         }
-        if (key.startsWith('-') && _.has(currentValue, keyUpdate)) {
-          return `Property '${objPath}${keyClean}' was updated. From ${isString(val)} to ${isString(currentValue[keyUpdate])}`;
-        }
-        return iter(val, `${objPath}${key}.`);
       });
-
-    return [...lines]
-      .filter((line) => (line.startsWith('Property')))
-      .map((line) => line.replace('[object Object]', '[complex value]')).join('\n');
+    return lines.filter((line) => line !== '').join('\n');
   };
-
-  return iter(value);
+  return iter(tree);
 };
 
 export default plain;

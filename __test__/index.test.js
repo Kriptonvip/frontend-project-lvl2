@@ -13,27 +13,27 @@ test('check rigth work YAML', () => {
   const correctAnswer = fs.readFileSync('./__fixtures__/result_stylish.txt', 'utf-8').trim();
   expect(compare(filepath1, filepath2, 'stylish')).toBe(correctAnswer);
 });
-// test('check plain text format yml', () => {
-//   const filepath1 = './__fixtures__/file1.yml';
-//   const filepath2 = './__fixtures__/file2.yml';
-//   const correctAnswer = fs.readFileSync('./__fixtures__/result_plain.txt', 'utf-8').trim();
-//   expect(compare(filepath1, filepath2, 'plain')).toBe(correctAnswer);
-// });
-// test('check plain text format json', () => {
-//   const filepath1 = './__fixtures__/file1.json';
-//   const filepath2 = './__fixtures__/file2.json';
-//   const correctAnswer = fs.readFileSync('./__fixtures__/result_plain.txt', 'utf-8').trim();
-//   expect(compare(filepath1, filepath2, 'plain')).toBe(correctAnswer);
-// });
-// test('check JSON text format json', () => {
-//   const filepath1 = './__fixtures__/file1.json';
-//   const filepath2 = './__fixtures__/file2.json';
-//   const correctAnswer = fs.readFileSync('./__fixtures__/json.txt', 'utf-8').trim();
-//   expect(compare(filepath1, filepath2, 'json')).toBe(correctAnswer);
-// });
-// test('check JSON text format yml', () => {
-//   const filepath1 = './__fixtures__/file1.yml';
-//   const filepath2 = './__fixtures__/file2.yml';
-//   const correctAnswer = fs.readFileSync('./__fixtures__/json.txt', 'utf-8').trim();
-//   expect(compare(filepath1, filepath2, 'json')).toBe(correctAnswer);
-// });
+test('check plain text format yml', () => {
+  const filepath1 = './__fixtures__/file1.yml';
+  const filepath2 = './__fixtures__/file2.yml';
+  const correctAnswer = fs.readFileSync('./__fixtures__/result_plain.txt', 'utf-8').trim();
+  expect(compare(filepath1, filepath2, 'plain')).toBe(correctAnswer);
+});
+test('check plain text format json', () => {
+  const filepath1 = './__fixtures__/file1.json';
+  const filepath2 = './__fixtures__/file2.json';
+  const correctAnswer = fs.readFileSync('./__fixtures__/result_plain.txt', 'utf-8').trim();
+  expect(compare(filepath1, filepath2, 'plain')).toBe(correctAnswer);
+});
+test('check JSON text format json', () => {
+  const filepath1 = './__fixtures__/file1.json';
+  const filepath2 = './__fixtures__/file2.json';
+  const correctAnswer = fs.readFileSync('./__fixtures__/json.txt', 'utf-8').trim();
+  expect(compare(filepath1, filepath2, 'json')).toBe(correctAnswer);
+});
+test('check JSON text format yml', () => {
+  const filepath1 = './__fixtures__/file1.yml';
+  const filepath2 = './__fixtures__/file2.yml';
+  const correctAnswer = fs.readFileSync('./__fixtures__/json.txt', 'utf-8').trim();
+  expect(compare(filepath1, filepath2, 'json')).toBe(correctAnswer);
+});

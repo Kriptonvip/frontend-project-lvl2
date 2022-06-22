@@ -11,5 +11,6 @@ export default (data, formatName) => {
       return stylish(data);
     default:
       throw new Error(`Unknown format: '${formatName}'!`);
+    // вы писали что ту не должно быть дефолтного поведения, но тогда ругается линтер
   }
 };

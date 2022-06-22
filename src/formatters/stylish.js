@@ -10,7 +10,7 @@ const stylish = (tree) => {
     const indentSize = depth * spacesCount;
     const currentIndent = replacer.repeat(indentSize);
     const indentforDiff = replacer.repeat(indentSize - 2);
-    const indentclose = replacer.repeat(indentSize - 4);
+    const indentClose = replacer.repeat(indentSize - 4);
     const lines = Object
       .entries(node)
       .map(([key, val]) => {
@@ -35,7 +35,7 @@ const stylish = (tree) => {
     return [
       '{',
       ...lines,
-      `${indentclose}}`,
+      `${indentClose}}`,
     ].join('\n');
   };
   return iter(tree, 1);
