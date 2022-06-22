@@ -24,7 +24,7 @@ const genDiff = (filepath1, filepath2, formatName) => {
   const file2 = getData(filepath2);
   const data = compare(file1, file2);
   const result = diff(data, formatName);
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
