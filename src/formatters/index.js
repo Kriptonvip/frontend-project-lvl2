@@ -10,6 +10,5 @@ export default (data, formatName) => {
     case 'stylish':
       return stylish(data);
     default:
-      throw new Error(`Unknown format: '${formatName}'!`);
   }
 };
