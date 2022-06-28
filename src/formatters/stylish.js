@@ -27,7 +27,7 @@ const stylish = (tree) => {
           case 'unchanged':
             return `${indentforDiff}  ${key}: ${stringValue}`;
           case 'changed':
-            return `${indentforDiff}- ${key}: ${stringify(value[0], replacer, indentSize)}\n${indentforDiff}+ ${key}: ${stringify(value[1], replacer, indentSize)}`;
+            return `${indentforDiff}- ${key}: ${stringify(val.oldValue, replacer, indentSize)}\n${indentforDiff}+ ${key}: ${stringify(val.newValue, replacer, indentSize)}`;
           default:
             throw new Error(`Unknown state: '${state}'!`);
         }

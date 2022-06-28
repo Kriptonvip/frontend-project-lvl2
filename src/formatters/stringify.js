@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 const stringify = (value, replacer = ' ', spacesCount = 1) => {
-  const iter = (currentValue, depth) => {
+  const iter = (currentValue, depth = 1) => {
     if (!_.isObject(currentValue)) {
       return `${currentValue}`;
     }
@@ -20,7 +20,7 @@ const stringify = (value, replacer = ' ', spacesCount = 1) => {
     ].join('\n');
   };
 
-  return iter(value, 1);
+  return iter(value);
 };
 
 export default stringify;

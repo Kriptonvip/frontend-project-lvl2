@@ -5,8 +5,6 @@ const compare = (object1, object2) => {
   const keys2 = Object.keys(object2);
   // объединяем два массива, и сортируем по алфавиту.
   const keysUnion = _.sortBy([...new Set([...keys1, ...keys2])]);
-  const [old, added, unchanged, changed] = ['old', 'added', 'unchanged', 'changed'];
-  const [node, leaf] = ['node', 'leaf'];
   const compareArr = keysUnion.reduce((acc, key) => {
     const object1Value = object1[key];
     const object2Value = object2[key];
@@ -15,7 +13,7 @@ const compare = (object1, object2) => {
     if (_.isPlainObject(object1[key]) && _.isPlainObject(object2[key])) {
       const object = {
         [key]: {
-          type: node,
+          type: 'node',
           children: compare(object1Value, object2Value),
         },
       };
@@ -25,8 +23,8 @@ const compare = (object1, object2) => {
     if (object1Value === object2Value) {
       const object = {
         [key]: {
-          type: leaf,
-          state: unchanged,
+          type: 'leaf',
+          state: 'unchanged',
           value: object1Value,
         },
       };
@@ -36,9 +34,10 @@ const compare = (object1, object2) => {
     if (_.has(object1, key) && _.has(object2, key)) {
       const object = {
         [key]: {
-          type: leaf,
-          state: changed,
-          value: [object1Value, object2Value],
+          type: 'leaf',
+          state: 'changed',
+          oldValue: object1Value,
+          newValue: object2Value,
         },
       };
       return { ...acc, ...object };
@@ -47,8 +46,8 @@ const compare = (object1, object2) => {
     if (_.has(object1, key)) {
       const object = {
         [key]: {
-          type: leaf,
-          state: old,
+          type: 'leaf',
+          state: 'old',
           value: object1Value,
         },
       };
@@ -58,8 +57,8 @@ const compare = (object1, object2) => {
     if (_.has(object2, key)) {
       const object = {
         [key]: {
-          type: leaf,
-          state: added,
+          type: 'leaf',
+          state: 'added',
           value: object2Value,
         },
       };

@@ -34,7 +34,7 @@ const plain = (tree) => {
           case 'old':
             return `Property '${objPath}${key}' was removed`;
           case 'changed':
-            return `Property '${objPath}${key}' was updated. From ${stringifyPlain(val.value[0])} to ${stringifyPlain(val.value[1])}`;
+            return `Property '${objPath}${key}' was updated. From ${stringifyPlain(val.oldValue)} to ${stringifyPlain(val.newValue)}`;
           default:
             return '';
         }
