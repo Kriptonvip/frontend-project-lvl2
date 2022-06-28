@@ -4,7 +4,6 @@ import YAML from 'yaml';
 
 const getData = (fileName) => {
   const filePath = path.resolve(fileName);
-  console.log(filePath, 1);
   const file = fs.readFileSync(filePath, 'utf8');
   if (fileName.endsWith('json')) {
     return JSON.parse(file);
