@@ -1,6 +1,6 @@
-import readFile from './readFile.js'
 import path from 'path';
 import YAML from 'yaml';
+import readFile from './readFile.js';
 
 const getData = (fileName) => {
   const filePath = path.resolve(fileName);
