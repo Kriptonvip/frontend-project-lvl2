@@ -1,10 +1,10 @@
-import fs from 'fs';
+import readFile from './readFile.js'
 import path from 'path';
 import YAML from 'yaml';
 
 const getData = (fileName) => {
   const filePath = path.resolve(fileName);
-  const file = fs.readFileSync(filePath, 'utf8');
+  const file = readFile(filePath);
   if (fileName.endsWith('json')) {
     return JSON.parse(file);
   }
