@@ -1,6 +1,6 @@
 import diff from './formatters/index.js';
 import compare from './compare.js';
-import getData from './getData.js';
+import getData from './parse.js';
 
 const genDiff = (filepath1, filepath2, formatName) => {
   const file1 = getData(filepath1);

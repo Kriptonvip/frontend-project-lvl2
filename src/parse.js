@@ -1,16 +1,25 @@
 import fs from 'fs';
+import path from 'path';
 import YAML from 'yaml';
 
-const parse = (filePath, fileName) => {
+const parse = (filePath, ext) => {
   const file = fs.readFileSync(filePath, 'utf8');
-
-  if (fileName.endsWith('json')) {
-    return JSON.parse(file);
+  switch (ext) {
+    case 'json':
+      return JSON.parse(file);
+    case 'yaml':
+      return YAML.parse(file);
+    case 'yml':
+      return YAML.parse(file);
+    default:
+      return Error('File path or extension is wrong');
   }
-  if (fileName.endsWith('yaml') || fileName.endsWith('yml')) {
-    return YAML.parse(file);
-  }
-  return Error('File path or extension is wrong');
 };
 
-export default parse;
+const getData = (fileName) => {
+  const filePath = path.resolve(fileName);
+  const ext = path.extname(filePath).slice(1);
+  return parse(filePath, ext);
+};
+
+export default getData;
