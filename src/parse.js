@@ -2,8 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import YAML from 'yaml';
 
-const parse = (filePath, ext) => {
-  const file = fs.readFileSync(filePath, 'utf8');
+const parse = (file, ext) => {
   switch (ext) {
     case 'json':
       return JSON.parse(file);
@@ -18,8 +17,9 @@ const parse = (filePath, ext) => {
 
 const getData = (fileName) => {
   const filePath = path.resolve(fileName);
+  const file = fs.readFileSync(filePath, 'utf8');
   const ext = path.extname(filePath).slice(1);
-  return parse(filePath, ext);
+  return parse(file, ext);
 };
 
 export default getData;
