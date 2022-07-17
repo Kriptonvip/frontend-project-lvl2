@@ -1,39 +1,19 @@
 import fs from 'fs';
 import compare from '../src/index.js';
 
-test('check rigth work json', () => {
-  const filepath1 = './__fixtures__/file1.json';
-  const filepath2 = './__fixtures__/file2.json';
-  const correctAnswer = fs.readFileSync('./__fixtures__/result_stylish.txt', 'utf-8').trim();
-  expect(compare(filepath1, filepath2, 'stylish')).toBe(correctAnswer);
-});
-test('check rigth work YAML', () => {
-  const filepath1 = './__fixtures__/file1.yml';
-  const filepath2 = './__fixtures__/file2.yml';
-  const correctAnswer = fs.readFileSync('./__fixtures__/result_stylish.txt', 'utf-8').trim();
-  expect(compare(filepath1, filepath2, 'stylish')).toBe(correctAnswer);
-});
-test('check plain text format yml', () => {
-  const filepath1 = './__fixtures__/file1.yml';
-  const filepath2 = './__fixtures__/file2.yml';
-  const correctAnswer = fs.readFileSync('./__fixtures__/result_plain.txt', 'utf-8').trim();
-  expect(compare(filepath1, filepath2, 'plain')).toBe(correctAnswer);
-});
-test('check plain text format json', () => {
-  const filepath1 = './__fixtures__/file1.json';
-  const filepath2 = './__fixtures__/file2.json';
-  const correctAnswer = fs.readFileSync('./__fixtures__/result_plain.txt', 'utf-8').trim();
-  expect(compare(filepath1, filepath2, 'plain')).toBe(correctAnswer);
-});
-test('check JSON text format json', () => {
-  const filepath1 = './__fixtures__/file1.json';
-  const filepath2 = './__fixtures__/file2.json';
-  const correctAnswer = fs.readFileSync('./__fixtures__/json.txt', 'utf-8').trim();
-  expect(compare(filepath1, filepath2, 'json')).toBe(correctAnswer);
-});
-test('check JSON text format yml', () => {
-  const filepath1 = './__fixtures__/file1.yml';
-  const filepath2 = './__fixtures__/file2.yml';
-  const correctAnswer = fs.readFileSync('./__fixtures__/json.txt', 'utf-8').trim();
-  expect(compare(filepath1, filepath2, 'json')).toBe(correctAnswer);
+const fixturesPaths = {
+  json: ['./__fixtures__/file1.json', './__fixtures__/file2.json'],
+  yml: ['./__fixtures__/file1.yml', './__fixtures__/file2.yml'],
+};
+const correctAnswer = (formater) => fs.readFileSync(`./__fixtures__/result_${formater}.txt`, 'utf-8').trim();
+
+test.each([
+  { formater: 'stylish', ext: 'json' },
+  { formater: 'stylish', ext: 'yml' },
+  { formater: 'plain', ext: 'json' },
+  { formater: 'plain', ext: 'yml' },
+  { formater: 'json', ext: 'json' },
+])('check formater - "$formater" ext - "$ext"', ({ formater, ext }) => {
+  expect(compare(fixturesPaths[ext][0], fixturesPaths[ext][1], formater))
+    .toBe(correctAnswer(formater));
 });
