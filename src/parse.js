@@ -2,14 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import YAML from 'yaml';
 
-const parse = (file, ext) => {
-  switch (ext) {
+const parse = (data, format) => {
+  switch (format) {
     case 'json':
-      return JSON.parse(file);
+      return JSON.parse(data);
     case 'yaml':
-      return YAML.parse(file);
+      return YAML.parse(data);
     case 'yml':
-      return YAML.parse(file);
+      return YAML.parse(data);
     default:
       return Error('File path or extension is wrong');
   }
