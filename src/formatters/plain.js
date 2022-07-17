@@ -25,7 +25,7 @@ const plain = (tree) => {
     const lines = Object
       .entries(node)
       .map(([key, val]) => {
-        if (val.type === 'node') {
+        if (val.children) {
           return iter(val.children, `${objPath}${key}.`);
         }
         switch (val.state) {

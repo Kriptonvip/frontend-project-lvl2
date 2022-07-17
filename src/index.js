@@ -1,6 +1,15 @@
+import fs from 'fs';
+import path from 'path';
 import diff from './formatters/index.js';
 import compare from './compare.js';
-import getData from './parse.js';
+import parse from './parse.js';
+
+const getData = (fileName) => {
+  const filePath = path.resolve(fileName);
+  const file = fs.readFileSync(filePath, 'utf8');
+  const ext = path.extname(filePath).slice(1);
+  return parse(file, ext);
+};
 
 const genDiff = (filepath1, filepath2, formatName) => {
   const file1 = getData(filepath1);

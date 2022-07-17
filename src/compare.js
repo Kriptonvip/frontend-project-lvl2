@@ -13,7 +13,6 @@ const compare = (object1, object2) => {
     if (_.isPlainObject(object1[key]) && _.isPlainObject(object2[key])) {
       const object = {
         [key]: {
-          type: 'node',
           children: compare(object1Value, object2Value),
         },
       };
@@ -23,7 +22,6 @@ const compare = (object1, object2) => {
     if (object1Value === object2Value) {
       const object = {
         [key]: {
-          type: 'leaf',
           state: 'unchanged',
           value: object1Value,
         },
@@ -34,7 +32,6 @@ const compare = (object1, object2) => {
     if (_.has(object1, key) && _.has(object2, key)) {
       const object = {
         [key]: {
-          type: 'leaf',
           state: 'changed',
           oldValue: object1Value,
           newValue: object2Value,
@@ -46,7 +43,6 @@ const compare = (object1, object2) => {
     if (_.has(object1, key)) {
       const object = {
         [key]: {
-          type: 'leaf',
           state: 'old',
           value: object1Value,
         },
@@ -57,7 +53,6 @@ const compare = (object1, object2) => {
     if (_.has(object2, key)) {
       const object = {
         [key]: {
-          type: 'leaf',
           state: 'added',
           value: object2Value,
         },

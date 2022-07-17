@@ -14,8 +14,8 @@ const stylish = (tree) => {
     const lines = Object
       .entries(node)
       .map(([key, val]) => {
-        const { type, state, value } = val;
-        if (type === 'node') {
+        const { state, value } = val;
+        if (val.children) {
           return `${currentIndent}${key}: ${iter(val.children, depth + 1)}`;
         }
         const stringValue = stringify(value, replacer, indentSize);
