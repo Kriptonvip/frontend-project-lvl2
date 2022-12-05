@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/Kriptonvip/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Kriptonvip/frontend-project-lvl2/actions)",
+  "description": "[![Actions Status](https://github.com/Kriptonvip/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/Kriptonvip/frontend-project-12/actions)",
   "type": "module",
   "jest": {
     "testEnvironment": "node",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kriptonvip/frontend-project-lvl2.git"
+    "url": "git+https://github.com/Kriptonvip/frontend-project-12.git"
   },
   "author": "Kripton",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kriptonvip/frontend-project-lvl2/issues"
+    "url": "https://github.com/Kriptonvip/frontend-project-12/issues"
   },
-  "homepage": "https://github.com/Kriptonvip/frontend-project-lvl2#readme",
+  "homepage": "https://github.com/Kriptonvip/frontend-project-12#readme",
   "dependencies": {
     "commander": "^9.0.0",
     "js-yaml": "^4.1.0",
